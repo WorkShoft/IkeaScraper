@@ -12,9 +12,7 @@ $ pythonmanage.py migrate
 The webdriver uses headless Chrome. It looks for chromedriver at */usr/local/bin*.
 
 * Usage
-I have written a custom Django command that crawls the IKEA site with Selenium.
-
-
+This project uses a custom *crawl* Django command that crawls the IKEA site with Selenium.
 
 The script does three additional things:
 1) Prints the scraped data to stdout
