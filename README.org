@@ -4,4 +4,5 @@
 
 #+BEGIN_SRC bash
 $ mkvirtualenv -a $(pwd) ikeascraper
+$ pip install -r requirements.txt
 #+END_SRC
