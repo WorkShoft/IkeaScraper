@@ -40,3 +40,4 @@ Scraping items...
 Dumped 428 items to sofas.json
 #+END_SRC
 
+The source code of the crawl command is [[https://github.com/WorkShoft/ikeascraper/blob/master/main/management/commands/crawl.py][here]].
