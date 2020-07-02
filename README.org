@@ -5,4 +5,40 @@
 #+BEGIN_SRC bash
 $ mkvirtualenv -a $(pwd) ikeascraper
 $ pip install -r requirements.txt
+$ python manage.py makemigrations 
+$ pythonmanage.py migrate
 #+END_SRC
+
+The webdriver uses headless Chrome. It looks for chromedriver at */usr/local/bin*.
+
+* Usage
+I have written a custom Django command that crawls the IKEA site with Selenium.
+
+
+
+The script does three additional things:
+1) Prints the scraped data to stdout
+2) Saves the scraped data to the database
+3) Saves the scraped data to a JSON file
+
+You can provide a filename when you run the command. Otherwise, the file will be /items.json/
+#+BEGIN_SRC bash
+$ workon ikeascraper
+$ python manage.py crawl [filename]
+#+END_SRC
+#+BEGIN_SRC bash
+$ python manage.py crawl sofas.json
+
+Cleaning database...
+Scraping items...
+ 11%|███████████████████▌                                                                                                                                                            | 1/9 [00:14<01:54,  0.07it/s]
+
+[
+ ...
+ {'colors': [],
+  'imageUrl': 'https://www.ikea.com/es/es/images/products/kivik-chaise-longue-hillared-anthracite__0479950_PE619104_S5.JPG?f=xs',
+  'name': 'KIVIK',
+  'type': 'Chaiselongue'}]
+Dumped 428 items to sofas.json
+#+END_SRC
+

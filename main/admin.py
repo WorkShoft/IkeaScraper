@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import SofaType, Sofa, Color
+
+admin.site.register(SofaType)
+admin.site.register(Sofa)
+admin.site.register(Color)
