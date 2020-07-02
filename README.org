@@ -1,0 +1,7 @@
+#+OPTIONS: ^:nil
+
+* Setup 
+
+#+BEGIN_SRC bash
+$ mkvirtualenv -a $(pwd) ikeascraper
+#+END_SRC
