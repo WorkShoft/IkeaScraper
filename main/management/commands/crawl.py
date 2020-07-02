@@ -43,7 +43,7 @@ class Command(BaseCommand):
     def __init__(self, *args, **kwargs):
         config = chrome_webdriver_config()
         self.driver = webdriver.Chrome(**config)
-        
+
         super().__init__(*args, **kwargs)
 
     def add_arguments(self, parser):
@@ -71,19 +71,24 @@ class Command(BaseCommand):
 
                     pp = pprint.PrettyPrinter()
                     pp.pprint(scraped_items)
-                    print(self.style.SUCCESS(f"Dumped {number_of_items} items to {self.dump_filename}"))
-                
+                    print(
+                        self.style.SUCCESS(
+                            f"Dumped {number_of_items} items to {self.dump_filename}"
+                        )
+                    )
+
         except Exception as e:
             print(f"{self.style.ERROR(e)}\n")
 
-
         finally:
             self.driver.close()
-    
+
     def scrape_pages(self, url=URLS[0]):
         self.driver.get(url)
 
-        number_of_items = self.driver.find_element(*SofaTypeListLocators.NUMBER_OF_ITEMS).text
+        number_of_items = self.driver.find_element(
+            *SofaTypeListLocators.NUMBER_OF_ITEMS
+        ).text
 
         total_pages = math.ceil(int(number_of_items) / self.ITEMS_PER_PAGE)
         self.driver.get(url + f"&page={total_pages}")
@@ -100,11 +105,13 @@ class Command(BaseCommand):
 
         for i, name in enumerate(names):
             sofa_type, created = SofaType.objects.get_or_create(description=types[i])
-            sofa, created = Sofa.objects.get_or_create(name=name, image_url=image_urls[i], type=sofa_type)
+            sofa, created = Sofa.objects.get_or_create(
+                name=name, image_url=image_urls[i], type=sofa_type
+            )
             sofa.save()
 
         return [s.as_dict() for s in Sofa.objects.all()]
-        
+
     def clean_database(self):
         print(self.style.MIGRATE_HEADING(f"Cleaning database..."))
         SofaType.objects.all().delete()

@@ -18,14 +18,14 @@ class Color(models.Model):
             "colorId": self.color_id,
         }
 
-    
+
 class SofaType(models.Model):
     description = models.TextField(unique=True)
 
     def __str__(self):
         return self.description
 
-    
+
 class Sofa(models.Model):
     name = models.TextField()
     image_url = models.TextField()
@@ -40,7 +40,5 @@ class Sofa(models.Model):
             "name": self.name,
             "type": str(self.type),
             "imageUrl": self.image_url,
-            "colors": [c.as_dict() for c in self.colors.all()]
+            "colors": [c.as_dict() for c in self.colors.all()],
         }
-
-

@@ -7,28 +7,43 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Color',
+            name="Color",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('product_id', models.TextField()),
-                ('url', models.TextField()),
-                ('color_name', models.TextField()),
-                ('color_id', models.TextField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("product_id", models.TextField()),
+                ("url", models.TextField()),
+                ("color_name", models.TextField()),
+                ("color_id", models.TextField()),
             ],
         ),
         migrations.CreateModel(
-            name='Sofa',
+            name="Sofa",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField()),
-                ('type', models.TextField()),
-                ('image_url', models.TextField()),
-                ('colors', models.ManyToManyField(to='main.Color')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField()),
+                ("type", models.TextField()),
+                ("image_url", models.TextField()),
+                ("colors", models.ManyToManyField(to="main.Color")),
             ],
         ),
     ]

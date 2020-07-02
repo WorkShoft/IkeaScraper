@@ -5,11 +5,11 @@ class ManySofaLocators(object):
     """
     Locators for sofa list pages
     """
-    
+
     NAME = (By.CLASS_NAME, "product-compact__name")
     TYPE = (By.CLASS_NAME, "product-compact__type")
     IMAGE = (By.XPATH, "//div[@class='range-image-claim-height']/img")
-    
+
 
 class SingleSofaLocators(object):
     """
