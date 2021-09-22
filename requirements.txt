@@ -1,4 +1,4 @@
 selenium==3.141.0
 tqdm==2.2.3
-Django==3.0.8
+Django==3.1.13
 
